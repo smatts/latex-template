@@ -1,0 +1,14 @@
+output:
+  - format: asciidoc
+  - format: epub
+  - format: html
+  - format: pdf
+generate_landingpage: true
+content_files:  # uncomment this to set the order of the documents (default alphabetical)
+  - Spectroscopy.tex
+#   - introduction.md
+#   - chapter01.md
+#   - chapter02.md
+#   - appendix.md
+generate_reuse_note: true
+generate_toc_in_pdf: false

@@ -1,0 +1,398 @@
+\renewcommand{\lastmod}{July 1, 2021}
+\renewcommand{\chapterauthors}{Markus Lippitz}
+
+
+\chapter{Second Harmonic Generation}
+
+
+\section{Tasks}
+
+\begin{itemize}
+\item The data set contains the electric field at the surface of two gold nanostructures for two different laser polarization directions at the same laser power. Compare the (relative)  efficiency of second harmonic generation for these four cases.
+
+\item Assuming that the fundamental field distribution would not change (which is not true), estimate how large the nanorod would need to be so that opposing surfaces do not cancel out anymore. Calculate the angular emission pattern in this case.
+\end{itemize}
+
+\section{Experiment}
+
+Metal nanostructures of almost arbitrary (two-dimensional) shape can be fabricated by electron beam lithography (EBL). A resist is patterned by the electron beam, similar to how a photoresist is exposed by a light beam. During development, the resist is dissolved at the exposed positions. At these places, an evaporated metal film touches the glass substrate and sticks to the substrate. Dissolving now also the remaining resist (in another solvent than the developer), the metal film on top is lifted off and only the patterned surfaces remain as metal patterns.
+
+In the experiment, rectangular and U-shaped structures are investigated. The rectangular ones are called 'rods', the U-shaped 'split rings', as one can imagine a ring that is cut open. The spectroscopic properties of these split rings go beyond the scope of this chapter\footcite{klein06_science}. We stick here to a single wavelength.
+
+For second-harmonic generation, one focuses a  laser beam of short pulses (about 100 fs) on the sample and detects in transmission or reflection the generated light at half the wavelength. Experiments on single nanostructures are possible using a microscope objective.
+
+\section{Nonlinear Susceptibility}
+
+The interaction of light with a dielectric medium is described\footcite{MilonniEberly1988,Yariv1989} by the  susceptibility $\chi$.
+An electric field $E$ moves the
+charge carriers and generates a polarization $P$
+\begin{equation}
+  P(E) = \epsilon_0 \; \chi \; E \quad.
+\end{equation}
+This can be described by the classical Lorentz oscillator model,
+in which electrons are bound  in a one-dimensional potential $V(x)$. In first approximation this potential is a
+harmonic potential so that the deflection
+$x$ of the electrons is proportional to the incoming field $E$.
+If the field strength of the field $E$ increases, the deflection
+$x$ sometime is so large that the approximation of the potential by a
+parabola is no longer valid and higher-order terms in the
+potential need to be added. This then leads to the deflection
+$x$ and thus also the polarization $P$ depending also in higher
+order  on the electric field $E$:
+\begin{equation}
+  P(E) = \epsilon_0 \, \left( \chi^{(1)} E + \chi^{(2)} E^2 + \chi^{(3)}
+  E^3 + \cdots \right)  \quad .
+\end{equation}
+The higher-order terms in $E$  put an end to the 
+superposition principle of linear optics. Waves of different
+frequency $\omega$ can no longer be treated independently.
+A $n$-th order process in $E$ mixes $n$ monochromatic
+waves $E(\omega_i)$. In addition, the individual waves
+$E(\omega_i)$ do not have to have parallel wave vectors and also the
+polarization $P$ not necessarily needs to be parallel to the electric field. The susceptibilities $\chi^{(i)}$ are therefore tensors of
+$(i+1)$-th rung, so that the above equation
+ should be written as
+\begin{align}
+  P_i = \epsilon_0 \, & \left(  \sum_j \chi^{(1)}_{ij} E_j(\omega_1)
+     + \sum_{j,k} \chi^{(2)}_{ijk} E_j(\omega_1) E_k(\omega_2)  \right. \nonumber \\+
+     & \left.
+    \sum_{j,k,l} \chi^{(3)}_{ijkl} E_j(\omega_1) E_k(\omega_2) E_l(\omega_3) + \cdots \right)  ,
+\end{align}
+where $E_i(\omega_j)$ is the $i$-th vector component of a
+monochromatic wave with frequency $\omega_j$. The
+polarization $P$ in turn is the source of the electric field $E$:
+\begin{equation}
+   \nabla^2 E - \epsilon_0 \, \mu_0 \, \ddot{E} = \mu_0 \ddot{P}  \quad .
+   \label{eq:shg_wave_equation}
+\end{equation}
+
+Due to the non-linear relationship between the field $E$ and the
+polarization $P$ new frequency components appear in $E$. This
+is shown in  figure \ref{fig:shg_nonlinear_polarization},
+where the series expansion was limited to the quadratic term. In the output field $E$, there is  additional to the 
+input frequency $\omega$ a component with frequency zero and --- based on the asymmetry of the positive and negative half-waves ---
+one with the doubled frequency. The first causes a
+shifting the average value compared to the input field, the second
+an asymmetry of the oscillation around this mean value. The absolute value of the polarization $P$ is not invariant under flipping of the  sign of the electric field $E$ , as can be seen in part A of the figure.
+
+
+\begin{figure}
+\center
+\includegraphics[width=\textwidth]{\currfiledir nonlinear_polarisation.pdf}
+\caption{Influence of a non-linear relationship between
+incident field $E$ and polarization $P$. A: linear and non-linear relationship
+between $E$ and $P$. B: in the linear case the polarization follows
+the field. C: in the nonlinear case, on the one hand the mean value
+shifted (DC part of the output field) and on the other hand the
+curve is deformed (additional component with doubled frequency).}
+\label{fig:shg_nonlinear_polarization}
+\end{figure}
+
+
+
+Let us investigate the mixing of waves more in detail.
+We assume the fields $E(\omega)$ as plane waves
+\begin{equation}
+  E(\omega) = \hat{E}(z) \, e^{-i \, (\omega \,
+  t - k \, z)} 
+\end{equation}
+with
+\begin{equation}
+ k = n
+  \omega / c = \omega \, \sqrt{\epsilon_0 \, \mu_0 \, [1+
+  \chi^{(1)}(\omega)]} \quad.
+\end{equation}
+The left side of the wave equation
+\ref{eq:shg_wave_equation} is calculated using the slowly varying envelope approximation (SVEA), i.e., assuming that 
+ the amplitude $ \hat{E}(z)$ does not vary much on the wavelength scale. We get
+\begin{eqnarray}
+ \nabla^2 E & \approx &  \left( 2 i k \frac{d
+ \hat{E}(z)}{dz} - k^2 \hat{E}(z) \right) e^{-i \, (\omega \,
+  t - k \, z)}  \quad ,\label{eq:shg_nabla2E}\\
+%
+ \epsilon_0 \, \mu_0 \, \frac{\partial^2 E}{\partial t^2} &=& -   \epsilon_0 \,
+ \mu_0 \omega^2 E(\omega)  \quad .\label{eq:shg_partial2E_t2}
+\end{eqnarray}
+%
+In the collinear case, the second time derivative 
+$\ddot{P}$ of the polarization on the right-hand side of the wave equation Eq.~\ref{eq:shg_wave_equation} becomes, again limiting us the quadratic terms, 
+\begin{equation}
+  \mu_0 \ddot{P} = - \mu_0 \epsilon_0 \, \left( \sum_j \chi^{(1)}_{j}\, \omega_j^2 \, E(\omega_j)
+     + \sum_{j,k} \chi^{(2)}_{jk} \, (\omega_j + \omega_k)^2 \, E(\omega_j) E(\omega_k) \right) \quad .
+     \label{eq:shg_ddot_p}
+\end{equation}
+If the wave equation  has to be fulfilled for
+three fixed but different frequencies $\omega_i$ for all
+times $t$ , it must be fulfilled independent of  $t$ for each
+$\omega_i$. To simplify things, we distinguish 
+incoming waves from outgoing waves by the sign of the
+frequency $\omega$ or the wave vector $k$: 
+incoming waves are given a negative sign.
+Likewise, their amplitude $\hat{E}$ will be inserted as complex conjugated. Conservation of energy can then be conveniently expressed as $\sum
+\omega_i = 0$. Finally, one obtains after some shuffling
+ three
+equations 
+\begin{equation}
+ \frac{d  \hat{E_a}(z)}{dz} \,
+= %
+- \, \frac{i}{2}   \sqrt{ \frac{\mu_0} {\epsilon_a}}\,\epsilon_0
+  \, \omega_a \, \chi^{(2)} \, \hat{E}_b^{\star} \hat{E}_c^{\star}  e^{-i  \Delta k \, z}
+  \qquad \text{with} \qquad \Delta k = \sum k_i
+  \label{eq:shg_e_of_z_nl}
+\end{equation}
+with  cyclically swapped  indices
+$\{a,b,c\} = \{1,2,3\} $.
+
+\begin{questions}
+
+\item Derive eq. \ref{eq:shg_ddot_p}
+
+\item Compare the generation of a new field $\hat{E_a}(z)$ in eqs. \ref{eq:shg_e_of_z_nl} and   \ref{eq:shg_wave_equation} with the formalism we used to describe the wave emitted by a coherence in a two-level system in chapter \ref{chap:fid}.
+
+
+\end{questions}
+
+
+\section{Frequency Doubling}
+
+The simplest case of non-linear generation of new frequencies
+is the one already shown in figure \ref{fig:shg_nonlinear_polarization}: 
+ frequency doubling or second harmonic generation. It results from the equation
+\ref{eq:shg_e_of_z_nl}, if we set
+\begin{equation}
+  \omega_1 = \omega_2 = - \omega \qquad \text{and} \qquad
+  \omega_3 = 2\omega
+\end{equation}
+This satisfies  energy conservation. The
+conservation of momentum, in this context also called phase matching, is described by
+\begin{equation}
+ \Delta k = 2 k_{\omega} - k_{2 \omega} = 2 \omega
+ \sqrt{\epsilon_0 \, \mu_0} \left[ n(\omega) - n(2 \omega) \right]
+\end{equation}
+We will consider only the case of non-depleted pump, i.e., that the amplitude of the incoming wave does not change although energy is transferred into the beam at the second harmonic, so that
+$\hat{E}_1(z) = \hat{E}_2(z)
+= const$. This allows simple integration of $\hat{E}_3(z) = \hat{E}_{2\omega}(z)$
+and we obtain
+\begin{eqnarray}
+ \hat{E}_{2\omega}(L) &=& - \, \frac{i}{2}   \sqrt{ \frac{\mu_0} {\epsilon_{2\omega}}}\,\epsilon_0
+  \, (2 \omega) \, \chi^{(2)} \, (\hat{E}_{\omega})^2   \int_0^L  e^{i  \Delta k \,
+  z'} dz  \\
+  &= & %
+- \,    \sqrt{ \frac{\mu_0} {\epsilon_{2\omega}}}\,\epsilon_0
+  \,  \omega \, \chi^{(2)} \, (\hat{E}_{\omega})^2  \, \frac{  e^{i  \Delta k \,
+  L} -1}{\Delta k}
+\end{eqnarray}
+and
+\begin{equation}
+  \left| \hat{E}_{2\omega}(L) \right|^2 = %
+  \frac{\mu_0} {\epsilon_{2\omega}} \, \left(\epsilon_0
+  \,  \omega \, \chi^{(2)} \right)^2 \, (\hat{E}_{\omega})^4  \, L^2 \, \text{sinc}^2 ( \Delta k \, L /2 )
+   \quad . \label{eq_shg_efficiency_shg}
+\end{equation}
+The intensity at the doubled frequency is proportional to
+the square of the intensity of the incident wave, since two photons
+of frequency $\omega$ are converted into one photon of frequency $2\omega$. The conversion efficiency increases with the
+square of the crystal  length $L$. At the same time with 
+growing $L$ the condition for phase matching becomes stricter, because we need 
+$\Delta k \, L / 2 \ll 1 $. To obtain a high
+conversion efficiency, phase matching should therefore be
+ optimal. This also holds if the above restriction to
+constant intensity of the excitation wave is dropped.
+
+The idea of phase matching is qualitatively shown in figure
+\ref{fig:shg_phase_matching}. The upper part shows the nonlinear 
+polarization $P \propto E_{\omega}^2$. It oscillates
+at twice the frequency of the incident field. At the instances indicated by the circles,  a partial wave should  be generated with
+the doubled frequency (half wavelength). If the
+refractive index $n$ at both wavelengths $\lambda_1$ and
+$\lambda_2$ is equal, then both partial waves overlap
+constructively, and the initial intensity of the second harmonic
+is rising. However, if the refractive index $n(\lambda_2)$ is higher,
+the two partial waves are partially extinguished, and the
+output intensity is lower. Equation
+\ref{eq_shg_efficiency_shg} also shows that 
+phase matching (i.e. momentum conservation) does not need to be fulfilled  exactly.  The Heisenberg uncertainty relation gives some freedom
+\footcite{Demtroeder_laser,SalehTeich1991}:
+The conversion of the two fundamental photons into one second-harmonic photon 
+must occur somewhere in the crystal. This gives an upper limit for  the position uncertainty and thus a lower limit for the momentum uncertainty.
+Within  this  range of momentum mismatch frequency doubling  is possible, which is described by $\text{sinc}(\Delta k L/2)$.\sidenote{This is the same Fourier transform that also connects a slit and its diffraction pattern.}
+
+
+
+
+\begin{figure}
+\center
+\includegraphics[width=\textwidth]{\currfiledir sketch_phase_matching.pdf}
+\caption{Schematic representation of 
+phase matching.
+In the instances marked by circles a
+partial wave with doubled frequency is launched. When the
+refractive indices $n(\omega)$ and $n(2 \omega)$ do not
+match, the partial waves cancel out each other  and
+the intensity of the second harmonic does not increase.}
+\label{fig:shg_phase_matching}
+\end{figure}
+
+
+\begin{questions}
+
+\item Explain the phase matching condition $\text{sinc} ( \Delta k \, L /2 )$ using the space-momentum uncertainty relation.
+
+\item Explain the need of phase matching by requiring energy and momentum conservation.
+
+\end{questions}
+
+
+\section{Phase matching by birefringent crystals}
+
+
+For optimum phase matching, the refractive index of
+excitation wave and second harmonic need to coincide. Since the
+refractive index  depends on the frequency of the field, this
+match is  usually not given. 
+Birefringent crystals provide a way out. In such crystals, the refractive index differs  
+ between ordinary and extraordinary
+polarized waves as long as the propagation direction is not along the
+optical crystal axis. Figure
+\ref{fig:shg_angle_phase_matching} shows the relationship between
+the axes. For the refractive index $n_{eo}(\omega, \theta)$ of a
+extraordinary wave holds
+\begin{equation}
+  \frac{1}{n_{eo}^2(\omega, \theta)} = \frac{\cos^2
+  \theta}{n_{o}^2(\omega)}+ \frac{\sin^2 \theta}{n_{eo}^2(\omega)} \quad
+  , \label{eq:shg_neo}
+\end{equation}
+where $n_{eo}(\omega) = n_{eo}(\omega, \theta = \pi/2)$. 
+By choosing the 
+angle $\theta$ between the direction of propagation and
+of the optical crystal axis, the refractive index can now be tuned
+so that (in case of a negative uniaxial crystal with
+$n_{eo} < n_o$)
+\begin{equation}
+  n_{eo}(2 \omega, \theta) = n_o(\omega) \quad.
+\end{equation}
+This is illustrated by the example of $\beta$-bariumborate (BBO,
+$\beta$-BaB$_2$O$_4$) in figure
+\ref{fig:shg_angle_phase_matching}. Fundamental  and
+second harmonic  wave are polarized perpendicular to each other. With
+this method it is therefore possible to achieve optimum phase matching for
+a pair of frequencies $\omega$, $2\omega$. But it 
+has several disadvantages: The crystal must be rotated
+to achieve phase matching. This results in a variable beam
+offset
+when tuning the fundamental frequency, so that this method can only be used with great effort in a laser
+resonator. Moreover, to achieve a high intensity of the incident field, the laser beam
+needs to be focused tightly. However, this changes the angle of incidence over
+the beam cross section and thus the quality of the
+phase matching, so that not the whole beam is frequency doubled. Finally, birefringence means that the propagation direction of  ordinary and  extraordinary ray is different, so that they do not overlap optimally over the whole crystal length. The beams walk off.
+All these disadvantages are compensated by
+the so-called \emph{non-critical phase matching}
+\footcite{Demtroeder_laser,Hopf86}:
+the angle $\theta$ is chosen to be 90 degrees. Thus the
+refractive index $n_{eo}(\omega, \theta)$ depends only very weakly
+(not critical) on the angle of incidence $\theta$, so that
+the phase adjustment is equally good even with strong focusing. In this case
+the direction of propagation does not differ between ordinary and
+extraordinary beam, so that the entire crystal length
+can be exploited. To use  non-critical
+phase matching, the different
+temperature dependence of the two refractive indices is exploited  and
+the crystal is either cooled or heated. This process
+does not require a change of the beam path with variation
+the wavelength anymore, making it suitable for use in a
+laser resonator.
+
+\begin{figure}
+\center
+\includegraphics[width=\textwidth]{\currfiledir angle_phase_matching.pdf}
+\caption{Phase matching by birefringence using the example of
+$\beta$-barium borate (BBO). By suitable choice of the angle
+$\theta$ of the optical crystal axis to the direction of propagation of
+beams, the refractive index for the extraordinary wave is adjusted
+so that $n_{eo}(2 \omega, \theta) = n_o(\omega)$. }
+\label{fig:shg_angle_phase_matching}
+
+\end{figure}
+
+\begin{questions}
+\item Read in an optics textbook of your choice on birefringence and eq. \ref{eq:shg_neo}.
+
+\item Calculate the phase-matching angle for frequency doubling of 700 nm light using BBO. You will need the Sellmeier coefficients of BBO, which can be found online.
+\end{questions}
+
+
+\section{Symmetry}
+
+Second harmonic generation cannot take place in all media. It requires that the medium does not have a center of inversion, i.e., is not centrosymmetric. The medium needs to be able to distinguish an electric field pointing to the left from one pointing to the right. Not many materials fulfill this requirement.
+
+Centrosymmetry means that we  mirror all points at a center of inversion, i.e., $(x,y,z) \rightarrow (-x, -y, -z)$, assuming the origin to be the center of inversion. If a material possesses  this symmetry, it will \emph{not} show SHG. To see this, let's assume an electric field $E(t)$ that produces a nonlinear polarization
+\begin{equation}
+P^{(2)}(t) = \chi^{(2)} \, E(t)^2 \quad .
+\end{equation}
+\emph{With} inversion symmetry, we can just mirror all vectors, i.e., it should hold
+\begin{equation}
+- P^{(2)}(t) = \chi^{(2)} \, \left( - E(t) \right)^2 = \chi^{(2)} \, E(t)^2  \quad .
+\end{equation}
+Both equations can only be fulfilled if $ \chi^{(2)} =0$.
+
+We have seen this effect already in Fig \ref{fig:shg_nonlinear_polarization}. An electric field pointing into the positive direction has a different effect, produces a different polarization than the same amplitude of electric field pointing in negative direction. Only if this is the case, then second harmonic can be generated.
+
+
+Typical materials used for second harmonic generation such as BBO or LBO have a crystal structure that lacks centrosymmetry.
+
+\begin{questions}
+\item Convince yourself that BBO is not centrosymmetric.
+
+\item Draw a sketch similar to Fig. \ref{fig:shg_nonlinear_polarization}, but for a centrosymmetric material, which does not allow $\chi^{(2)}$ but only $\chi^{(3)}$  processes.
+
+
+\end{questions}
+
+
+\section{SHG at surfaces}
+
+A surface by definition violates centrosymmetry. Inside has to be different from outside, or there would be no interface. This means that second harmonic generation is possible at the interface of two centrosymmetric media. Interface-SHG or -SFG (sum frequency generation) is a spectroscopic method to investigate molecules at interfaces of, e.g., droplets. The signal stems from the molecules at the interface and is thus able to discriminate against molecules in bulk solution.
+
+
+Let us discuss interface SHG at the example of a metal surface, that is responsible for the signal in the experiment of this chapter. Which elements of the nonlinear susceptibility tensor $\chi^{(2)}$  do contribute? As the interface is responsible, we describe everything in a local coordinate system where $n$ is the surface normal and $t$  and $s$ are parallel to the surface and perpendicular to each other. The tensor components are $\chi^{(2)}_{ijk}$ where $  i,j,k  \in \{n , t, s \}$. The  value of these tensor components was determined experimentally\footcite{Makitalo11_OE,Wang09_prb}, but we can estimate some things.
+
+At least one vector component needs to be along the surface normal $n$, as otherwise the surface would not contribute. It is not surprising that 
+\begin{equation}
+\chi^{(2)}_{nnn} = 250 \chi^{(2)}_0
+\end{equation}
+ is the largest component, where both incoming fields and the generated polarization is perpendicular to the surface. A much weaker effect is observed when only one of the vectors is oriented along the surface normal 
+\begin{equation}
+\chi^{(2)}_{nts} = \chi^{(2)}_{nst} = 1 \chi^{(2)}_0 \quad \text{and} \quad
+\chi^{(2)}_{tsn} = \chi^{(2)}_{tns} = \chi^{(2)}_{stn} = \chi^{(2)}_{snt}= 3.6 \chi^{(2)}_0 \quad.
+\end{equation}
+All other tensor components are zero up to experimental accuracy.
+
+
+\begin{questions}
+\item Assume that the optical field at the equator  (coordinates $x^2 + y^2 = 1$)  of a gold sphere (coordinates $x^2 + y^2 + z^2 = 1$) is constant in amplitude and points everywhere in the $+x$ direction. Calculate the nonlinear polarisation $P^{(2)}$ along the equator. 
+
+\end{questions}
+
+
+\section{SHG at nanostructures}
+
+A nanostructure is on the size of the wavelength of light or smaller. At all surface elements a second order nonlinear polarization can be generated. However, in the optical far field, the contributions of all surface elements interfere with each other. At this point, the symmetry of the nanostructure enters, while the symmetry of the material is broken by the surface.
+
+In case the nanostructure is centrosymmetric, we find for  each surface element  an identical but mirrored element with opposing direction of the surface normal. As the direction of the surface normal enters in the direction of the nonlinear polarization and thus the direction of the generated second harmonic field, the contributions of opposing surface elements cancel out in the optical far field. This breaks down as soon as the size of the structure is not small anymore. Then the field emitted at one surface element can acquire a phase difference relative to the field generated at the opposing surface so that the interference is not fully destructive anymore.
+
+If the nanostructure is not centrosymmetric, the fundamental field at two opposing surface elements will not be the same. Then the nonlinear polarization differs, and the two partial fields do not cancel. Second harmonic generation at nanostructure is thus a sensitive measure for the symmetry of the particle. In reality, nominally symmetric structures such as spheres are never ideally symmetric. Small protrusions and facets break the symmetry. Gold 'spheres' produce a stronger second harmonic signal than third harmonic, although the latter is symmetry-allowed (but a higher order of nonlinearity and therefor weaker).
+
+
+
+
+\begin{questions}
+\item What is the minimum distance of the grooves in a grating (at a given wavelength) so that the structure works as dispersive grating?
+
+\item How could one design a grating that does not have a zeroth order in transmission?
+
+\end{questions}
+
+
+
+
+\printbibliography[segment=\therefsegment,heading=subbibliography]

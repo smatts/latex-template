@@ -1,0 +1,306 @@
+\documentclass[notoc,nofonts,a4paper,twoside,nobib]{tufte-book}
+%\documentclass[nofonts,a4paper,twoside]{book}
+
+\usepackage{currfile,hyperxmp}
+ 
+\usepackage{filemod}
+   
+\usepackage[
+    type={CC},
+    modifier={by-sa},
+    version={4.0},
+    imagewidth = 17mm,
+ ]{doclicense}
+
+
+\usepackage[refsegment=chapter,style=authoryear-comp,natbib=true]{biblatex}
+
+\addbibresource{literature.bib}
+
+%rm -rf `biber --cache`
+
+\usepackage{amssymb,amsmath}
+
+
+
+\input{tikz_header}
+\usetikzlibrary{external}
+\tikzexternalize[prefix=figures/]
+
+
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+
+
+\usepackage{booktabs}
+\usepackage{xurl}
+\usepackage{hyperref}
+
+\usepackage{units}
+
+\usepackage{chemformula}
+
+\usepackage{braket}
+\setcounter{secnumdepth}{0}
+
+% citations
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{round} 
+
+% pandoc syntax highlighting
+%\usepackage{color}
+%\usepackage{fancyvrb}
+
+
+
+% longtable
+\usepackage{longtable,booktabs}
+\usepackage{multicol}
+\usepackage[normalem]{ulem}
+
+% morefloats
+\usepackage{morefloats}
+
+\usepackage{calc}
+\usepackage[titletoc]{appendix}
+
+
+\input{tint_book_header}
+
+
+\usepackage[theme=default-plain,charsperline=62]{jlcode}
+ % from https://github.com/wg030/jlcode
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}%
+
+
+\ifthenelse{\boolean{@tufte@twoside}}
+  {\fancyhead[LE]{\thepage\quad{\newlinetospace{Experiments in Spectroscopy}}}%
+    \fancyhead[RO]{{\newlinetospace{\leftmark}}\quad\thepage}}%
+  {\fancyhead[RE,RO]{{\newlinetospace{c}}\quad\thepage}}
+  
+ 
+%\makeatletter
+\fancypagestyle{mystyle}{%
+\fancyhf{}%
+\fancyfoot[L]{%
+\begin{minipage}{17mm}
+\doclicenseImage
+\end{minipage}
+\begin{minipage}{60mm}
+ \footnotesize
+ \doclicenseLongText
+\end{minipage}%
+}% 
+%\fancyfoot[L]{\doclicenseThis}% 
+}
+%\makeatother
+
+\usepackage{etoolbox}
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{mystyle}}{}{}
+
+
+
+\hypersetup{
+ linktocpage,
+  colorlinks,
+  citecolor=Maroon,
+  filecolor=Maroon,
+  linkcolor=RoyalBlue,
+  urlcolor=RoyalBlue
+}
+
+\renewcommand{\chaptername}{Chapter\ }
+\newcommand{\chapterauthors}{Markus Lippitz}
+\newcommand{\lastmod}{\Filemodtoday{\currfilepath}}
+
+
+\newcommand{\addtochapter}{%
+\vspace*{-12mm}{
+\setlength{\parindent}{0pt}
+\chapterauthors \newline \lastmod
+}
+\vspace*{12mm}
+}
+
+\makeatletter
+\let\stdchapter\chapter
+\renewcommand*\chapter{%
+  \@ifstar{\starchapter}{\@dblarg\nostarchapter}}
+\newcommand*\starchapter[1]{\stdchapter*{#1}}
+\def\nostarchapter[#1]#2{\stdchapter[{#1}]{#2} \addtochapter}
+\makeatother
+
+\makeatletter
+  \def\my@tag@font{\scriptsize}
+  \def\maketag@@@#1{\hbox{\m@th\normalfont\color{gray}\my@tag@font#1}}
+  \let\amsmath@eqref\eqref
+  \renewcommand\eqref[1]{{\let\my@tag@font\relax\amsmath@eqref{#1}}}
+\makeatother
+
+\newcounter{questions}[chapter]
+
+\newenvironment{questions}{
+\subsection{\normalsize Questions}
+\begin{enumerate} \small
+\setcounter{enumi}{\value{questions}}
+}{
+\setcounter{questions}{\value{enumi}}
+\end{enumerate} 
+}
+
+\newcommand{\pluto}[1]{%
+%
+\edef\cfd{\currfiledir}%
+\StrGobbleRight{\cfd}{1}[\mystring]%
+%
+\sidenote{%
+\begin{tikzpicture}
+[baseline={([yshift=-2pt]current bounding box.center)}]
+\definecolor{redline}{RGB}{201,61,57}
+\definecolor{redfill}{RGB}{214,102,97}
+\definecolor{blueline}{RGB}{148,91,176}
+\definecolor{bluefill}{RGB}{170,125,192}
+\definecolor{greenline}{RGB}{59,151,46}
+\definecolor{greenfill}{RGB}{107,171,91}
+\path[draw=redline,fill=redfill,line width=0.8pt] (0,-5.4pt) circle (4.4pt);
+\path[draw=blueline,fill=bluefill,line width=0.8pt] (0,0) circle (4.4pt);
+\path[draw=greenline,fill=greenfill,line width=0.8pt] (0,5.4pt) circle (4.4pt);
+\end{tikzpicture} \ \ 
+\href{https://raw.githubusercontent.com/MarkusLippitz/Spectroscopy/to-be-published/\mystring/pluto/#1.jl}{download}
+\ \ 
+\href{https://jupyter.ep3.uni-bayreuth.de/spectroscopy/\mystring/pluto/#1.html}{view}
+\ \ 
+\href{https://binder.plutojl.org/v0.17.1/open?url=https\%253A\%252F\%252Fraw.githubusercontent.com\%252FMarkusLippitz\%252FSpectroscopy\%252Fto-be-published\%252F\mystring\%252Fpluto\%252F#1.jl}{run on binder}
+}}  
+
+
+
+
+
+
+%\includeonly{1_fundamentals/1_absorption/absorption}
+%\includeonly{1_fundamentals/2_fluorescence/fluorescence}
+%\includeonly{1_fundamentals/3_vibrations/vibrations}
+%\includeonly{1_fundamentals/4_mie/mie}
+%\includeonly{1_fundamentals/5_aggregates/molecular_aggregates}
+
+%\includeonly{2_quantum/1_rabi/rabi}
+%\includeonly{2_quantum/2_FID/fid}
+%\includeonly{2_quantum/4_cavity_strong_coupling/strong}
+%\includeonly{2_quantum/5_purcell/purcell}
+
+%\includeonly{3_nonlinear/1_shg/shg}
+%\includeonly{3_nonlinear/2_fwm/fwm}
+%\includeonly{3_nonlinear/3_tpe/tpe}
+%\includeonly{3_nonlinear/4_2d_spec/two-dim-spec}
+
+
+%\includeonly{4_plasmonics/1_hybridization/hybrid}
+%\includeonly{4_plasmonics/2_surface/surface}
+%\includeonly{4_plasmonics/3_cda/cda}
+%\includeonly{4_plasmonics/4_rods/rods}
+
+%\includeonly{5_nanooptics/1_microscopy/microscopy.tex}
+%\includeonly{4_plasmonics/2_surface/surface,5_nanooptics/2_dipole_emisison/dipole_angular_spectrum}
+% \includeonly{5_nanooptics/2_dipole_emisison/dipole_angular_spectrum}
+
+%\includeonly{9_appendix/1_fourier/fourier}
+%\includeonly{9_appendix/0_julia/julia}
+
+
+\begin{document}
+\sloppy
+\tikzexternaldisable
+
+
+\title{\hbox{Experiments in Spectroscopy}}
+
+\author{Markus Lippitz}
+\date{\today}
+%\date{July 21, 2020}
+
+
+\maketitle
+
+\newpage
+\thispagestyle{empty}
+
+\hfill
+
+\vfill
+
+\noindent \textit{cite as}\\
+\noindent Lippitz, Markus, 2022.  \\
+\noindent Lecture Notes: Experiments in Spectroscopy (Winter 2022). Zenodo. \\
+\noindent \url{https://doi.org/10.5281/zenodo.5377926}
+
+%
+\tableofcontents
+
+\include{preface}
+
+%
+\part{Fundamentals}
+
+\include{1_fundamentals/1_absorption/absorption}
+\include{1_fundamentals/2_fluorescence/fluorescence}
+\include{1_fundamentals/3_vibrations/vibrations}
+\include{1_fundamentals/4_mie/mie}
+\include{1_fundamentals/5_aggregates/molecular_aggregates}
+
+%-------
+\part{Two Level Systems}
+
+\include{2_quantum/1_rabi/rabi}
+\include{2_quantum/2_FID/fid}
+\include{2_quantum/4_cavity_strong_coupling/strong}
+\include{2_quantum/5_purcell/purcell}
+
+%-------
+\part{Nonlinear Spectroscopy}
+
+\include{3_nonlinear/1_shg/shg}
+\include{3_nonlinear/2_fwm/fwm}
+\include{3_nonlinear/3_tpe/tpe}
+\include{3_nonlinear/4_2d_spec/two-dim-spec}
+
+%-------
+\part{Plasmonics}
+
+\include{4_plasmonics/1_hybridization/hybrid}
+\include{4_plasmonics/2_surface/surface}
+\include{4_plasmonics/3_cda/cda}
+\include{4_plasmonics/4_rods/rods}
+
+%-------
+\part{Nanooptics}
+\include{5_nanooptics/1_microscopy/microscopy.tex}
+\include{5_nanooptics/2_dipole_emisison/dipole_angular_spectrum}
+
+%-------
+\renewcommand{\chaptername}{Appendix\ }
+
+\addcontentsline{toc}{part}{Appendix} 
+\appendix
+\appendixpage
+
+%
+\include{9_appendix/0_julia/julia}
+\include{9_appendix/1_fourier/fourier}
+
+
+
+%%\nocite{*}
+
+\printbibliography
+
+
+
+\end{document}
